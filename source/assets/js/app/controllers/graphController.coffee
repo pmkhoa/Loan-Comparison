@@ -16,8 +16,8 @@ App.GraphController = Ember.ObjectController.extend
 
     graph.set('chartType',  graphType)
     graph.set('renderToId', render_to)
-    graph.set('series',     data)
-    graph.set('categories', categories)
+    graph.set('series',     this.data)
+    graph.set('categories', this.categories)
     graph.set('title',      title)
 
     graph.initialize()

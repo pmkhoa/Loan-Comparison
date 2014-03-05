@@ -1,19 +1,22 @@
 App.LoansView = Ember.View.extend({
 	templateName: "loans",
 	didInsertElement: function() {
-	},
-
-	loansChanged: function() {
-  	//this.rerender();
-  	Ember.run.scheduleOnce('afterRender', this, 'propertyChanged');
-	}.observes('controller.@each.principal', 'controller.@each.name', 'controller.@each.interest_rate', 'controller.@each.months_to_pay'),
-
-	propertyChanged : function() {
-		console.log("property changed");
 		this.loadHighChart();
+		this.get('controller.controllers.loan').on('highChartReload', $.proxy(this.loadHighChart, this));
 	},
+
+	// loansChanged: function() {
+ //  	//this.rerender();
+ //  	Ember.run.scheduleOnce('afterRender', this, 'propertyChanged');
+	// }.observes('controller.@each', 'controller.@each.principal', 'controller.@each.name', 'controller.@each.interest_rate', 'controller.@each.months_to_pay'),
+
+	// propertyChanged : function() {
+	// 	console.log("property changed");
+	// 	this.loadHighChart();
+	// },
 
 	loadHighChart : function() {
+		console.log ("Reload Highchart");
 		if ( this.get('controller').get('model') ) {	
 			highChartData = this.loadHightChartsData();
 			var category = highChartData.category;

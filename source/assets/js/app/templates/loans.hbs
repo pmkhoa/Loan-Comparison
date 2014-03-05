@@ -33,11 +33,11 @@
 		    {{else}}
 		     <div class="form-wrapper">
 		        <p> <span class="input-label"> Loan Name: </span> <span class="loan-title"> {{name}} </span> </p>
-		        <p> <span class="input-label"> Principal: </span> <span class="principal"> {{principal}} </span> </p>
+		        <p> <span class="input-label"> Principal: </span> <span class="principal"> $ {{principal}} </span> </p>
 		        <p> <span class="input-label"> Annual Percentage Rate: </span> {{interest_rate}} </p>
 		        <p> <span class="input-label"> Months To Pay:</span>  {{months_to_pay}} </p>
-		       	<p class="padding-top-half"> <span class="input-label bold"> Monthly Payment: </span> {{monthly_payment}} </p>
-		        <p> <span class="input-label bold"> Total Interest: </span> <span class="total-interest"> {{total_interest}} </span></p>
+		       	<p class="padding-top-half"> <span class="input-label bold"> Monthly Payment: </span> $ {{monthly_payment}} </p>
+		        <p> <span class="input-label bold"> Total Interest: </span> <span class="total-interest"> $ {{total_interest}} </span></p>
 	    		<button class="edit-button" {{action "edit"}}><span class="entypo user_edit"> &#9998; </span>  </button>
 	    	</div>
 			{{/if}}
@@ -53,5 +53,6 @@
 	</div>
 	{{#if doesModelExist}}
 		<div id="loans-chart-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		{{!-- {{ view App.LineGraphView id=my-graph contentBinding=myData categoriesBinding=myCategories title="This is a graph" }} --}}
 	{{/if}}
 {{/if}}

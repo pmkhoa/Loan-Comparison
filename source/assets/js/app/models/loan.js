@@ -18,26 +18,26 @@ App.Loan = DS.Model.extend({
 
 });
 
-App.Loan.FIXTURES = [
-  {
-    id : 1,
-    name : 'Loan 1',
-    principal : 20000,
-    interest_rate : 4.5,
-    months_to_pay : 24,
-  },
-  {
-    id : 2,
-    name : 'Loan 2',
-    principal : 25000,
-    interest_rate : 4.2,
-    months_to_pay : 36,
-  },
-  {
-    id : 3,
-    name : 'Loan 3',
-    principal : 50000,
-    interest_rate : 4.2,
-    months_to_pay : 48,
-  },
-];
+// App.Loan.FIXTURES = [
+//   {
+//     id : 1,
+//     name : 'Loan 1',
+//     principal : 20000,
+//     interest_rate : 4.5,
+//     months_to_pay : 24,
+//   },
+//   {
+//     id : 2,
+//     name : 'Loan 2',
+//     principal : 25000,
+//     interest_rate : 4.2,
+//     months_to_pay : 36,
+//   },
+//   {
+//     id : 3,
+//     name : 'Loan 3',
+//     principal : 50000,
+//     interest_rate : 4.2,
+//     months_to_pay : 48,
+//   },
+// ];

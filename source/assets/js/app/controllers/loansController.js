@@ -1,4 +1,5 @@
 App.LoansController = Ember.ArrayController.extend({
+	needs: ['loan'],
 	isCreating : false,
 	data : null,
 	actions : {
@@ -32,12 +33,10 @@ App.LoansController = Ember.ArrayController.extend({
 		},
 		cancelCreateLoan : function() {
 			this.set('isCreating', false);
-			this.doesModelExist;
 		},
 	},
 
 	doesModelExist : function() {
-		console.log(this.get('model'));
 		if (this.get('model').get('length') > 0) {
 			return true;
 		}
