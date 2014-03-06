@@ -1,6 +1,6 @@
 App.LoansController = Ember.ArrayController.extend(Ember.Evented, {
-	isEditing: false,
 	needs: ['loan'],
+	isEditing: false,
 	isCreating : false,
 	data : null,
 	actions : {
@@ -27,7 +27,6 @@ App.LoansController = Ember.ArrayController.extend(Ember.Evented, {
 				this.set('isCreating', false);
 				loan.save();
 			}
-
 		},
 		activateCreateLoan : function() {
 			this.set('isCreating', true);

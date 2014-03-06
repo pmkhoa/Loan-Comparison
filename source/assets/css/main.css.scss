@@ -166,7 +166,7 @@ body {
     padding-top: 10px;
 }
 
-.create-loan, .save-button, .cancel, .delete {
+.create-loan, .save-button, .cancel, .delete, .confirm-delete {
    position: relative;
     background: none;
     border: 1px solid #439fe0;
@@ -233,7 +233,9 @@ body {
     }
     &:last-of-type {
         float: right;
-
+    }
+    &:nth-child(3n) {
+        margin-left: 0;
     }
 }
 .edit-box {
@@ -254,8 +256,8 @@ button:first-of-type {
 }
 .create-another-loan-wrapper {
     position: absolute;
-    right: 0;
-    top: 70px;
+    right: 2%;
+    top: 75px;
     width: auto;
     height: auto;   
 }

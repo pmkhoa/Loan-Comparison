@@ -4,6 +4,7 @@
 //= require_tree ./views
 //= require_tree ./templates
 //= require_tree ./routes
+//= require_tree ./helpers
 //= require      ./router
 
 window.App = Ember.Application.create();

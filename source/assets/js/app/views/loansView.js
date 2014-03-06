@@ -8,15 +8,15 @@ App.LoansView = Ember.View.extend({
 
 	},
 
-	// loansChanged: function() {
- //  	//this.rerender();
- //  	Ember.run.scheduleOnce('afterRender', this, 'propertyChanged');
-	// }.observes('controller.@each', 'controller.@each.principal', 'controller.@each.name', 'controller.@each.interest_rate', 'controller.@each.months_to_pay'),
+	loansChanged: function() {
+  	//this.rerender();
+  	Ember.run.scheduleOnce('afterRender', this, 'propertyChanged');
+	}.observes('controller.@each', 'controller.@each.modified'),
 
-	// propertyChanged : function() {
-	// 	console.log("property changed");
-	// 	this.loadHighChart();
-	// },
+	propertyChanged : function() {
+		console.log("property changed");
+		this.loadHighChart();
+	},
 
 	loadHighChart : function() {
 		console.log ("Reload Highchart");
@@ -28,10 +28,10 @@ App.LoansView = Ember.View.extend({
 			if ( !$('#loans-chart-container') ) {return;}
 			var highchart = $('#loans-chart-container').highcharts({
 				credits: { enabled: false },
-				chart: { type: 'column', backgroundColor: '#f2f4f7' },
-				title: { text: 'Loan Comparision' },
+				chart: { type: 'column', backgroundColor: '#ffffff' },
+				title: { text: 'Comparison Chart' },
 				xAxis: {  categories: category },
-				yAxis: { allowDecimals: false, min: 0 },
+				yAxis: { allowDecimals: false, min: 0},
 				tooltip: {
 					formatter: function() {
 						return '<b>'+ this.x +'</b><br/>'+ this.series.name;

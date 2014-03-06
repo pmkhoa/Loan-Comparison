@@ -3,17 +3,18 @@ App.Loan = DS.Model.extend({
   principal : DS.attr('number'),
   interest_rate : DS.attr('number'),
   months_to_pay : DS.attr('number'),
+  modified : DS.attr('date'),
   
   monthly_payment : function() {
     var monthly_interest_rate = (this.get('interest_rate') / 12) / 100;
     var principal = this.get('principal');
     var months_to_pay = this.get('months_to_pay');
     var calculated_val = Math.pow((1 + monthly_interest_rate), months_to_pay);
-    return Math.round(principal * ( monthly_interest_rate * calculated_val ) / (calculated_val - 1));
+    return (principal * ( monthly_interest_rate * calculated_val ) / (calculated_val - 1)).toFixed(2);
   }.property('principal', 'interest_rate', 'months_to_pay'),
   
   total_interest : function() {
-    return Math.round((this.get('monthly_payment') * this.get('months_to_pay')) - this.get('principal'));
+    return ((this.get('monthly_payment') * this.get('months_to_pay')) - this.get('principal')).toFixed(2);
   }.property('principal', 'monthly_payment'),
 
 });
