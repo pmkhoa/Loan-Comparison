@@ -2,6 +2,44 @@
 	<h1 class="no-margin baskerville white text-center vertical-padding"> Loan Comparision </h1>
 </header>
 
+<div id="loans-list" class="clearfix wrap">
+    {{#each itemController='loan'}}
+    
+    <div class="loan-box fourcol">
+	    {{#if isEditing}}
+	    <div class="form-wrapper edit-box">
+	    	<p> <span class="input-label"> Loan Name: </span> {{input value=name}} </p>
+	        <p> <span class="input-label"> Principal: </span> {{input value=principal}} </p>
+	        <p> <span class="input-label"> Annual Percentage Rate: </span>  {{input value=interest_rate}} </p>
+	        <p> <span class="input-label"> Months To Pay: </span>  {{input value=months_to_pay}} </p>
+    		<button class="save-button" {{action "save"}}><span class="entypo user_edit"> &#9998; </span> <span class="text"> Save </span> </button>
+    		<button class="delete" {{action "removeLoan"}}> <span class="entypo user_edit"> &#10060; </span> <span class="text"> Delete </span> </button>
+    	</div>
+	    {{else}}
+	     <div class="form-wrapper">
+	        <p> <span class="input-label"> Loan Name: </span> <span class="loan-title"> {{name}} </span> </p>
+	        <p> <span class="input-label"> Principal: </span> <span class="principal"> $ {{principal}} </span> </p>
+	        <p> <span class="input-label"> Annual Percentage Rate: </span> {{interest_rate}} </p>
+	        <p> <span class="input-label"> Months To Pay:</span>  {{months_to_pay}} </p>
+	       	<p class="padding-top-half"> <span class="input-label bold"> Monthly Payment: </span> $ {{monthly_payment}} </p>
+	        <p> <span class="input-label bold"> Total Interest: </span> <span class="total-interest"> $ {{total_interest}} </span></p>
+    		<button class="edit-button" {{action "edit"}}><span class="entypo user_edit"> &#9998; </span>  </button>
+    	</div>
+		{{/if}}
+	</div>
+	<div class="create-another-loan-wrapper clearfix"> 
+		<button class="create-loan" {{action "activateCreateLoan"}}> <span class="entypo user_edit">&#10133; </span> <span class="text"> Create Loan </span> </button> 
+	</div>
+	{{else}}
+		<div class="create-loan-wrapper"> 
+			<button class="create-loan" {{action "activateCreateLoan"}}> <span class="entypo user_edit">&#10133; </span> <span class="text"> Create Loan </span> </button> 
+		</div>
+	{{/each}}
+</div>
+{{#if doesModelExist}}
+	<div id="loans-chart-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+{{/if}}
+
 {{#if isCreating}}
 	<div class="modal-wrapper">
 	  <div class="confirm-box modal-content">
@@ -16,43 +54,4 @@
 		</div>
 	  </div>
 	</div>
-{{else}}
-	<div id="loans-list" class="clearfix wrap">
-	    {{#each itemController='loan'}}
-	    
-	    <div class="loan-box fourcol">
-		    {{#if isEditing}}
-		    <div class="form-wrapper edit-box">
-		    	<p> <span class="input-label"> Loan Name: </span> {{input value=name}} </p>
-		        <p> <span class="input-label"> Principal: </span> {{input value=principal}} </p>
-		        <p> <span class="input-label"> Annual Percentage Rate: </span>  {{input value=interest_rate}} </p>
-		        <p> <span class="input-label"> Months To Pay: </span>  {{input value=months_to_pay}} </p>
-	    		<button class="save-button" {{action "save"}}><span class="entypo user_edit"> &#9998; </span> <span class="text"> Save </span> </button>
-	    		<button class="delete" {{action "removeLoan"}}> <span class="entypo user_edit"> &#10060; </span> <span class="text"> Delete </span> </button>
-	    	</div>
-		    {{else}}
-		     <div class="form-wrapper">
-		        <p> <span class="input-label"> Loan Name: </span> <span class="loan-title"> {{name}} </span> </p>
-		        <p> <span class="input-label"> Principal: </span> <span class="principal"> $ {{principal}} </span> </p>
-		        <p> <span class="input-label"> Annual Percentage Rate: </span> {{interest_rate}} </p>
-		        <p> <span class="input-label"> Months To Pay:</span>  {{months_to_pay}} </p>
-		       	<p class="padding-top-half"> <span class="input-label bold"> Monthly Payment: </span> $ {{monthly_payment}} </p>
-		        <p> <span class="input-label bold"> Total Interest: </span> <span class="total-interest"> $ {{total_interest}} </span></p>
-	    		<button class="edit-button" {{action "edit"}}><span class="entypo user_edit"> &#9998; </span>  </button>
-	    	</div>
-			{{/if}}
-		</div>
-		<div class="create-another-loan-wrapper clearfix"> 
-			<button class="create-loan" {{action "activateCreateLoan"}}> <span class="entypo user_edit">&#10133; </span> <span class="text"> Create Loan </span> </button> 
-		</div>
-		{{else}}
-			<div class="create-loan-wrapper"> 
-				<button class="create-loan" {{action "activateCreateLoan"}}> <span class="entypo user_edit">&#10133; </span> <span class="text"> Create Loan </span> </button> 
-			</div>
-		{{/each}}
-	</div>
-	{{#if doesModelExist}}
-		<div id="loans-chart-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-		{{!-- {{ view App.LineGraphView id=my-graph contentBinding=myData categoriesBinding=myCategories title="This is a graph" }} --}}
-	{{/if}}
 {{/if}}

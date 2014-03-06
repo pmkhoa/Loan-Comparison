@@ -6,17 +6,20 @@ App.LoanController = Ember.ObjectController.extend(Ember.Evented, {
 	    },
 		save: function () {
 			this.set('isEditing', false);
-			var context = this;
 			this.get('model').save().then(function () {
-	        	this.trigger('highChartReload'); 
-	        	console.log ("reload");
+	        	this.triggerHighChartReload();
+	        	
 	      	}.bind(this));
 	    },
 	    removeLoan : function() {
 			var loan = this.get('model');
 			loan.deleteRecord();
 			loan.save();
-	    }
-	},
+	    },
 
+	},
+	triggerHighChartReload : function() {
+		console.log ("reload");
+		this.trigger('highChartReload');
+	}
 });

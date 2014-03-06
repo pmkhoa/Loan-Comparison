@@ -2,7 +2,10 @@ App.LoansView = Ember.View.extend({
 	templateName: "loans",
 	didInsertElement: function() {
 		this.loadHighChart();
+		// console.log (this.get('controller.needs'));
+		// console.log (this.get('controller').toString());
 		this.get('controller.controllers.loan').on('highChartReload', $.proxy(this.loadHighChart, this));
+
 	},
 
 	// loansChanged: function() {
@@ -49,9 +52,9 @@ App.LoansView = Ember.View.extend({
 
 	loadHightChartsData : function() {
 		var models = this.get('controller').get('model');
-		var category = new Array; 
-		var principalData = new Array; 
-		var interestData = new Array;
+		var category = new Array(); 
+		var principalData = new Array(); 
+		var interestData = new Array();
 
 		$.each(models.content, function(key, value) {
 			var data = value._data;
@@ -61,7 +64,6 @@ App.LoansView = Ember.View.extend({
 			interestData.push(parseInt(interest));
 		});
 
-		console.log (principalData);
 		return {category : category, principalData: principalData, interestData : interestData};
 	}
 

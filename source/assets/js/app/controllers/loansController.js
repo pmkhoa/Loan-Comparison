@@ -1,4 +1,5 @@
-App.LoansController = Ember.ArrayController.extend({
+App.LoansController = Ember.ArrayController.extend(Ember.Evented, {
+	isEditing: false,
 	needs: ['loan'],
 	isCreating : false,
 	data : null,
@@ -24,7 +25,7 @@ App.LoansController = Ember.ArrayController.extend({
 				this.set('interest_rate', '');
 				this.set('months_to_pay', '');
 				this.set('isCreating', false);
-				loan.save();				
+				loan.save();
 			}
 
 		},
@@ -37,10 +38,7 @@ App.LoansController = Ember.ArrayController.extend({
 	},
 
 	doesModelExist : function() {
-		if (this.get('model').get('length') > 0) {
-			return true;
-		}
-		return false;
+		return this.get('model').get('length') > 0;
 	}.property('@each'),
 
 });
