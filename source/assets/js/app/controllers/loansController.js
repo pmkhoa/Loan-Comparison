@@ -7,9 +7,8 @@ App.LoansController = Ember.ArrayController.extend(Ember.Evented, {
 		createLoan : function() {
 			var name = this.get('name');
 			var principal = this.get('principal');
-			var interest_rate = this.get('interest_rate');
+			var interest_rate = this.get('interest_rate').toString().replace('%', '');
 			var months_to_pay = this.get('months_to_pay');
-
 			if (!name.trim() || !principal.trim() || !interest_rate.trim() || !months_to_pay.trim() ) {
 				return;
 			}
