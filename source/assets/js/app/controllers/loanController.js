@@ -10,11 +10,6 @@ App.LoanController = Ember.ObjectController.extend(Ember.Evented, {
 			this.get('model').save();
 			this.get('model').set('modified', new Date());
 	    },
-	  //   removeLoan : function() {
-			// var loan = this.get('model');
-			// loan.deleteRecord();
-			// loan.save();
-	  //   },
 	    delete: function(){
 	      // our delete method now only toggles deleteMode's value
 	      this.toggleProperty('deleteMode');

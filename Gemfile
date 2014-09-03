@@ -2,11 +2,11 @@
 # the following line to use "https"
 source 'http://rubygems.org'
 
-gem "middleman", "~>3.2.0"
+gem "middleman"
 
 
 # Live-reloading plugin
-gem "middleman-livereload", "~> 3.1.0"
+gem "middleman-livereload"
 
 
 gem 'asset_sync'
@@ -16,5 +16,4 @@ gem "middleman-bower"
 
 # For faster file watcher updates on Windows:
 gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
-
 gem "sprockets-handlebars_template", :require => "sprockets/ember_handlebars_template"
